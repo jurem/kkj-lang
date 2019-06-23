@@ -1,0 +1,96 @@
+;;;;;;;;; arithmetics
+
+fun neg 0 swap sub ;
+fun pred 1 sub ;
+fun succ 1 add ;
+
+
+;;;;;;;;; conditionals
+
+fun select rotr choose ;
+fun if choose apply ;
+fun iftrue {} if ;
+fun iffalse {} swap if ;
+
+;;;;;;;;; comparisons
+
+fun isZero dup isNeg not swap isPos not and ;
+
+fun lt cmp isNeg ;
+fun le cmp dup isNeg swap isZero or ;
+fun eq cmp isZero ;
+fun ne eq not ;
+fun ge lt not ;
+fun gt le not ;
+
+fun min dup2 le select ;
+fun max dup2 ge select ;
+
+fun isEven 2 mod isZero ;
+fun isOdd isEven not ;
+
+fun abs dup isNeg { neg } iftrue ;
+
+
+;;;;;;;;; strings
+
+fun yesno "yes" "no" choose ;
+
+
+;;;;;;;;; stack manipulaton
+
+fun pop2 pop pop ;
+fun pop3 pop2 pop ;
+fun pop4 pop2 pop2 ;
+
+fun dup2 dip dip ;
+fun dup3 dep dep dep ;
+
+
+;; permutations of top three elements
+;; id, swap
+
+fun rotl rot ;
+fun swapOver rot swap ;
+fun rotr rot rot ;
+fun mirror rotr swap ;
+
+
+;;;;;;;;; combinators
+
+fun cons swap quote swap compose ;
+fun quote2 quote cons ;
+fun quote3 quote cons cons ;
+fun over2 quote2 swap over apply ;
+
+
+;;;;;;;;; loops
+
+;; {...} n times
+fun times
+	dup isZero
+		{ pop pop }
+		{ 1 sub dip swap over2 times }
+	if ;
+
+;; {c} {b} while
+fun while
+	dip swap over2 rotl
+		{ dup rotr over2 while }
+		{ pop pop }
+	if ;
+
+;; n init step folddown
+;; fun folddown
+
+;; uncons -> head tail
+;;-- map, fold, split
+
+;; v f g bi -> (f v) (g v)
+fun bi
+	dep swap apply			;; gv v f
+	rotr apply				;; gv fv
+	swap ;
+
+
+

@@ -1,0 +1,24 @@
+;; while loops
+
+5 { dup isZero not } { dup print 1 sub } while
+pop ln printstack ln
+
+5 { dup isZero not } { dup dup print 1 sub } while
+pop ln printstack ln
+
+clear
+5 { dup dup isZero not } { dup print 1 sub } while
+pop ln printstack ln
+
+clear
+5 { dup dup isZero not } { pop dup print 1 sub } while
+pop ln printstack ln
+
+
+;; times loops
+
+{ 42 print } 7 times ln
+
+42 { dup print pred } 7 times ln
+
+clear { true } 7 times { pop } 5 times .

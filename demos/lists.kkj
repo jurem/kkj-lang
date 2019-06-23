@@ -1,0 +1,30 @@
+;; map f [] = []
+;; map f h:t = (f h) : map f t
+
+;; input f l
+fun map
+	dup isNull
+		{ pop pop {} }
+		{ dup head			;; f h:t h
+		  rotl dup			;; h:t h f f
+		  over				;; h:t fh f
+		  rotl tail			;; fh f t
+		  map				;; fh rest
+		  cons
+		}
+	if ;
+
+fun printlist
+	apply printstack ;
+
+
+{ dup mul } {} map printlist
+
+clear
+{ dup mul } { 2 } map printlist
+
+clear	
+{ dup mul } { 2 3 } map printlist
+
+clear	
+{ dup mul } { 2 3 4 5 6 7 8 } map printlist

@@ -1,0 +1,35 @@
+;; Calculate factorial recursively
+
+fun factrec
+    dup isZero
+        { pop 1 }
+        { dup pred factrec mul }
+    if ;
+
+10 factrec println
+
+
+;; Calculate factorial iteratively
+
+fun factwhile
+    1 swap
+        { dup isZero not }
+        { swap dip mul swap pred }
+    while
+    pop ;
+
+10 factwhile println
+
+
+;; Calculate factorial iteratively
+
+fun facttimes
+    1 swap { dup pred { mul } over } 10 times pop ;
+
+10 facttimes println
+
+
+;;fun fact2
+;;    { 1 } { mul } printstack asdintfold ;
+
+;;10 fact2 println

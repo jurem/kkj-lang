@@ -1,0 +1,11 @@
+1 2 add println
+
+1 dup 42 pop add println
+
+2 3 { add } apply println
+
+0 toBool 2 42 printstack choose println
+
+41 { 1 add } apply println
+
+40 { 1 add } dup compose apply println

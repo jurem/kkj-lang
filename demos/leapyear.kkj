@@ -1,0 +1,12 @@
+;; n % 400 == 0 or n % 4 == 0 and n % 100 != 0
+fun isleapyear
+	dup 400 mod isZero
+	swap dup 4 mod isZero
+	swap dup 100 mod isZero not
+	swap pop
+	and or ;
+
+123 isleapyear println
+100 isleapyear println
+2020 isleapyear println
+2400 isleapyear println

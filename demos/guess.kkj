@@ -1,0 +1,18 @@
+fun prompt
+    println readInt ;
+
+fun guessNumber
+    "Enter a secret number: " prompt
+    {
+        dup
+        "Enter a number: " prompt
+        cmp
+            { "Too high!" println }
+            { "You won!" println exit }
+            { "To low!" println }
+            intchoose apply
+    }
+    10 times
+    "You loose" println ;
+
+guessNumber

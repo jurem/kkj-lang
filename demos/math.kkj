@@ -1,0 +1,39 @@
+;; x y divmod -> (x div y) (x mod y)
+fun divmod
+    0 rotr
+        { dup2 ge }
+        { swap dip sub
+          rotl succ rotr swap
+        }
+    while
+    pop ;
+
+19 7 divmod print println
+
+
+;; x y mulrussian -> (x * y)
+fun mulrussian
+    dup pred isZero
+        { pop }
+        { dup isOdd
+          swap 2 div
+          rotr { dup } { 0 } if
+          { dup add } over
+          mirror
+          mulrussian
+          add
+        }
+    if ;
+
+1234 4567 mulrussian println
+
+
+;; f(x,y,z) = y^2 + x^2 − |y|
+fun ugly
+    pop dup dup mul swap abs rotl dup mul swap sub add ;
+
+fun ugly2
+    pop { dup mul } { abs } bi sub { dup mul } over add ;
+
+1 2 3 ugly println
+1 2 3 ugly2 println
