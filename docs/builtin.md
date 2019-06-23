@@ -196,28 +196,43 @@ Prelude
 
 ## Functions as lists
 
+List is a function that creates list.
+
 Builtin
-* isNull: Fun -> Bool
+* isNull: List -> Bool
 	* Does the function represent the empty list?
-* head: Fun -> T
-	* The irst element
-* tail: Fun -> T
-* first: Fun -> T
+* first: List -> T
+	* The first element of the list
 * last: Fun -> T
+	* The last element of the list
 * front: Fun -> T
+	* List without the first element
 * back: Fun -> T
-* eval: 
+	* List without the last element
+* head: Fun -> T
+	* Same as first
+* tail: Fun -> T
+	* Same as back
+* eval:
+	* Evaluate function represented by list and store the results in new list. This basically simplifies a list (if possible).
 
 ## Printing and reading input
 
 Builtin
 * print: T ->
+	* Prints the top
 * println: T ->
+	* Printlns the top
 * ln: ->
+	* Prints the newline character
 * printstack: ->
+	* Prints the whole stack (without consumption)
 * .: alias to printstack
 * readInt: -> Int
+	* Reads one integer from the stdin and stores it on the stack.
 * readBool: -> Bool
+	* Reads a Boolean from the stdin and stores it on the stack.
 
 ## Other
 * exit: ->
+	* Exits
