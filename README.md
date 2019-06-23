@@ -2,6 +2,10 @@
 
 Compositional / concatenative programming language
 
+## Prerequsites
+
+You need Haskell and make. Tested on macOS with ghc 8.4.3 and make 3.81. 
+
 ## To compile and run
 
   cd compiler
